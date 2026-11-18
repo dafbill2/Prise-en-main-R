@@ -1,9 +1,8 @@
 ---
 title: "COURS SUR RSTUDIO"
 author: "Dr_Bill"
-date: "`r Sys.Date()`"
 output: html_document
-editor_options: 
+code_folding: show
   markdown: 
     wrap: 75
 ---
@@ -33,7 +32,7 @@ recherche, en data science, en finance, en santé publique et dans tout
 domaine nécessitant une analyse rigoureuse. Sa force vient de sa
 communauté active et de milliers de packages spécialisés.
 
-#Chapitre 1: PRESENTATION DE R ET RSTUDIO
+# Chapitre 1: PRESENTATION DE R ET RSTUDIO
 
 Définition de R R est un langage de programmation et un logiciel libre
 et gratuit, conçu pour l'analyse statistique et la visualisation de
@@ -89,87 +88,128 @@ Sauvegarder régulièrement avec cette commande au clavier : Ctrl + S
 
 ## Explorer les données
 
+```{r}
 head(data)
-str(data)
-summary(data)
+```
 
+```{r}
+str(data)
+```
+
+```{r}
+summary(data)
+```
 ### NETTOYAGE
 Gérer les valeurs manquantes
+
+```{r}
 colSums(is.na(data))
+```
 
 # Chapitre 3 : LES PACKAGES INDISPENSABLES
 
 Installation d'un package 
 
-  install.packages("ggplot2")
-  install.packages("gtsummary")
-  install.packages("dplyr")
-  install.packages("readr")
-  install.packages("tidyr")
-  install.packages("tidyverse")
-  install.packages("epiR")
+  ```{r}
+install.packages("ggplot2")
+install.packages("gtsummary")
+install.packages("dplyr")
+install.packages("readr")
+install.packages("tidyr")
+install.packages("tidyverse")
+install.packages("epiR")
+```
 
 NB: Respecter la même syntaxe que ceux citer ci-haut
 
 
-- Chargement d'un package
+- # Chargement d'un package
+
+```{r}
   library(ggplot2)
   library(readr)
+```
+
 NB: Respecter la même syntaxe que ceux citer précédemment
   
-Manipulation des données
-  library(dplyr)
-  library(tidyr)
-  library(readr)
+# Manipulation des données
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(readr)
+```
   
 # Visualisation
-  library(ggplot2)
+library(ggplot2)
 
 # Statistiques médicales
 library(gtsummary)
 library(epiR)
 
- Bioinformatique
+# Bioinformatique
 library(DESeq2)
 library(edgeR)
 library(limma) 
 
 # Chapitre 4 : LES VARIABLES
+
 Création d'une variable 
+
+```{r}
 age <- 25 
+```
 
 ## Variables numériques 
+
+```{r}
 poids <- 68.5
+```
 
-## Variables caractères 
+## Variables caractères
+
+```{r}
 nom <- "Bill" 
-
+```
 ## Variables logiques 
+
+```{r}
 malade <- TRUE
 non_malade <- FALSE
-
+```
 ## Vérifier le type d'une variable
+```{r}
 class(age) 
-
+```
 # Chapitre 5 : GRAPHIQUES
 Ici, il s'agit de faire une représentation en image sous forme de graphique afin de faciliter la compréhension ou de faciliter la présentation des résultats de nos données.
 Nous disposons de plusieurs types de graphiques qui suivent :
 
 ### Histogramme
+
+```{r}
 hist(age)
+```
 
 ### Diagramme en barres
+
+```{r}
 barplot(table(sexe))
+```
+### Boxplot
 
-## Boxplot
+```{r}
 boxplot(age \~ profession, data = smp1)
-
+```
 ### Graphique avec ggplot2
+```{r}
 ggplot(smp1, aes(x = prof, y = age)) + geom_boxplot(fill = "lightblue")
-
+```
 ### Nuage de points 
-ggplot(smp1, aes(x = age, y = n.enfant)) + geom_point()
 
+```{r}
+ggplot(smp1, aes(x = age, y = n.enfant)) + geom_point()
+```
 Nous avons citer parallèlement les graphiques et la syntaxe qui permet de générer cela.
 
 # Note 
@@ -179,7 +219,8 @@ Nous avons citer parallèlement les graphiques et la syntaxe qui permet de gén�
 - Vérifier les données avant l'analyse.
 - Sauvegarder régulièrement.
 
-  - Règle d'or
+  - # Règle d'or
+
 Ne jamais interpréter un résultat statistique sans avoir réalisé une exploration graphique préalable des données.
 
 
